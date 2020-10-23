@@ -14,23 +14,24 @@
 
 int main(){
     FILE *fp;
+
     char name[MAXLINE];
-    char height[MAXLINE];
     int age;
-    if((fp=fopen("text.txt", "r") != NULL)){
+    double height;
+
+    if(fp = fopen( "text.txt", "r") != NULL){
+
         fp = fopen("text.txt", "r");
 
-        fgets(name, MAXLINE, fp);
-        fgets(age, MAXLINE, fp);
-        fgets(height, MAXLINE, fp);
+        fscanf(fp, "%s\n%d\n%d", name, &age, &height);
 
-        *height = (double)(*height);
-        printf("name=%s, age=%s, height=%s", name, age, height);
+
+        printf("name=%s, age=%d, height=%d", name, age, height);
+
         fclose(fp);
-        return 0;
+    }else{
+        printf("Could not open file");
     }
-
-    printf("Could not open file\n");
-    return 1;
+    return 0;
 }
 
